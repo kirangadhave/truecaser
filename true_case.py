@@ -13,7 +13,9 @@ If we create a directory called foo, which marks the package name, we can then c
 
 text_vectors = pd.DataFrame(vectorize_text(text), columns=["first_word", "proper_noun", "label"])
 
-X = text_vectors.iloc[:, 0:2]
-Y = text_vectors.iloc[:, 2]
+X = text_vectors.iloc[:, 0:2].values
+Y = text_vectors.iloc[:, 2].values
+
+print(X)
 
 clf = DecisionTreeClassifier()
