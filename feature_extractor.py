@@ -18,11 +18,6 @@ class Word:
         self.vector = [self.is_first_word, self.is_proper_noun, self.is_capital]
 
     def print(self, pad_length=16):
-        print(str("{:<" + str(pad_length) + "}").format("Actual Word: "), self.actual_word)
-        print(str("{:<" + str(pad_length) + "}").format("Position: "), self.word_position)
-        print(str("{:<" + str(pad_length) + "}").format("Part of Speech: "), self.pos)
-        print(str("{:<" + str(pad_length) + "}").format("Is Capital: "), str(self.first_capital))
-        print()
         print(self.vector)
 
-word_featurizer(Word("Testing", 0))
+
