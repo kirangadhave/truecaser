@@ -17,7 +17,7 @@ class Word:
 
         self.vector = [self.is_first_word, self.is_proper_noun, self.is_capital]
 
-    def print(self, pad_length=16):
+    def print(self):
         print(self.vector)
 
 
