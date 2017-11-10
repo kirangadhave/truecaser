@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from feature_extractor import vectorize_text
 from sklearn.tree import DecisionTreeClassifier
+from sklearn import svm
 from sklearn.metrics import accuracy_score
 
 train_text = '''
@@ -27,7 +28,7 @@ test_vectors = pd.DataFrame(vectorize_text(test_text.lower()), columns=["first_w
 X_test = test_vectors.iloc[:, 0:2].values
 
 
-clf = DecisionTreeClassifier(criterion='gini', random_state=100)
+clf = svm.SVC(kernel='linear', gamma = 10)
 clf.fit(X_train, Y_train)
 
 preds = clf.predict(X_test)
