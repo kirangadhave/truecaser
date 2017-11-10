@@ -20,11 +20,17 @@ class Word:
     def print(self):
         print(self.vector)
 
-def vectorize_text(text):
+def vectorize_text(text, lower = False):
     vectors = []
     tagged_words = []
 
     for sentence in sent_tokenize(text):
-        for i,word in enumerate(pos_tag(word_tokenize(sentence))):
-            vectors.append(Word(word[0], i, word[1]))
+        if lower:
+            for i,word in enumerate(pos_tag(word_tokenize(sentence.lower()))):
+                if word[0].isalpha():
+                    vectors.append(Word(word[0], i, word[1]))
+        else:
+            for i,word in enumerate(pos_tag(word_tokenize(sentence))):
+                if word[0].isalpha():
+                    vectors.append(Word(word[0], i, word[1]))
     return [w.word for w in vectors],[w.vector for w in vectors]
