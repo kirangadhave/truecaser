@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-
+from nltk import word_tokenize, sent_tokenize, pos_tag_sents
 
 class Word:
     def __init__(self, word, position, pos = "UNK"):
@@ -21,3 +21,6 @@ class Word:
         print(self.vector)
 
 
+def sentence_vectorize(sentence):
+    for word in sent_tokenize(sentence):
+        print(word)
