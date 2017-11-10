@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
-from nltk import word_tokenize, sent_tokenize, pos_tag_sents
+from nltk import word_tokenize, sent_tokenize, pos_tag
+
 
 class Word:
     def __init__(self, word, position, pos = "UNK"):
@@ -24,3 +25,19 @@ class Word:
 def sentence_vectorize(sentence):
     for word in sent_tokenize(sentence):
         print(word)
+
+
+def process_text(text):
+    vectors = []
+    tagged_words = []
+
+    for sentence in sent_tokenize(text):
+        for i,word in enumerate(pos_tag(word_tokenize(sentence))):
+            vectors.append(Word(word[0], i, word[1]).vector)
+    return vectors
+
+a = '''
+This also shows True if it contains a number or punctuation mark for example. I need it so it is only uppercase letters (A-Z). Thanks
+'''
+
+print(process_text(a))
